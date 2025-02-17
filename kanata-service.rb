@@ -10,34 +10,11 @@ class KanataService < Formula
     system "cargo", "install", *std_cargo_args
   end
 
-  plist_options manual: "kanata -f #{ENV["HOME"]}/.config/kanata.kbd"
-
-  def plist
-    user_home = ENV["HOME"]
-
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-      <dict>
-        <key>Label</key>
-        <string>com.user.kanata-service</string>
-
-        <key>ProgramArguments</key>
-        <array>
-          <string>/opt/homebrew/bin/kanata</string>
-          <string>-f</string>
-          <string>#{user_home}/.config/kanata.kbd</string>
-        </array>
-
-        <key>RunAtLoad</key>
-        <true/>
-
-        <key>KeepAlive</key>
-        <true/>
-      </dict>
-      </plist>
-    EOS
+  service do
+    run [opt_bin/"kanata", "-f", "#{Dir.home}/.config/kanata.kbd"]
+    keep_alive true
+    error_log_path var/"log/kanata.log"
+    log_path var/"log/kanata.log"
   end
 
   test do
