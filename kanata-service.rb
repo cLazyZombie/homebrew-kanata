@@ -1,4 +1,4 @@
-class Kanata < Formula
+class KanataService < Formula
   desc "Keyboard remapping tool for macOS and Linux"
   homepage "https://github.com/jtroo/kanata"
   url "https://github.com/jtroo/kanata/archive/refs/tags/v1.8.0.tar.gz"
@@ -21,7 +21,7 @@ class Kanata < Formula
       <plist version="1.0">
       <dict>
         <key>Label</key>
-        <string>com.user.kanata</string>
+        <string>com.user.kanata-service</string>
 
         <key>ProgramArguments</key>
         <array>
