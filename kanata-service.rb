@@ -11,7 +11,7 @@ class KanataService < Formula
   end
 
   service do
-    run [opt_bin/"kanata", "-f", "#{Dir.home}/.config/kanata.kbd"]
+    run [opt_bin/"kanata", "-c", "#{Dir.home}/.config/kanata.kbd"]
     keep_alive true
     run_at_load true
     error_log_path var/"log/kanata.log"
